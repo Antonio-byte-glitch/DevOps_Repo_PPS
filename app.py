@@ -6,4 +6,4 @@
         # debe dar errores en linter
         """
         x = "no se usa"
-        return a+ b
+        return a + b
