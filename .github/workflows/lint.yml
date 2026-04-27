@@ -3,9 +3,9 @@ name: Pylint
 on: 
   pull_request:
     branches:
-      - main  # Cambia según rama principal
+      - main
     paths:  
-      - '**.py' # Se dispara sólo con esos ficheros
+      - '**.py'
 
 jobs:
   build:
@@ -17,17 +17,26 @@ jobs:
     # Paso 1: Checkout del repositorio
     - name: Checkout Code
       uses: actions/checkout@v4
+
     # Paso 2: Configurar Python
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v4
       with:
         python-version: ${{ matrix.python-version }}
+
     # Paso 3: Instalar dependencias        
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
         pip install pylint
+        # Si tienes un requirements.txt con dependencias extra (opcional)
+        # pip install -r requirements.txt
+
     # Paso 4: Ejecutar pylint
     - name: Analysing the code with pylint
       run: |
         pylint $(git ls-files '*.py')
+
+    # Paso 5: Ejecutar pruebas unitarias (NUEVO)
+    - name: Run Python unit tests
+      run: python -u -m unittest discover

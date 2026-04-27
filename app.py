@@ -1,9 +1,5 @@
-""" Docstring del módulo """
+"""Docstring del módulo"""
 
-
-    def suma(a: int, b: int) -> int:
-        """ docstring function
-        # debe dar errores en linter
-        """
-        x = "no se usa"
-        return a+ b
+def suma(a: int, b: int) -> int:
+    """Docstring de la función"""
+    return a + b
