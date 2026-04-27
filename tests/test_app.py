@@ -22,4 +22,3 @@ class SumaTest(unittest.TestCase):
         """ Esta prueba DEBE FALLAR"""
         res = suma("1", "4")
         self.assertEqual(res, 5)
-        
